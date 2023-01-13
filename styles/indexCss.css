@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#menu_control{
+    position: absolute;
+    z-index: 2;
+    /* opacity: 0; */
+}
+
+.header{
+    height: 50px;
+    /* background-color: #ccc; */
+    background-color: #fcc;
+    position: relative;
+}
+
+.logo{
+    width: 60px;
+    height: 40px;
+}
+
+.logo img{
+    vertical-align: middle;
+    position: absolute;
+    top: 5px;
+    left: 60px;
+    transition: .5s;
+    
+}
+
+.menu_btn{
+    width: 40px;
+    height: 40px;
+    background-color: #000;
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.menu_btn span{
+    /* font-size: 0; */
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    display: block;
+    overflow: hidden;
+}
+
+/* 偽元素 */
+.menu_btn::before{
+    content:'';
+    position: absolute;
+    height: 2px;
+    left: 2px;
+    width: 36px;
+    background-color: #aaa;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    box-shadow: 0 8px 0 #aaa,
+                0 -8px 0 #aaa;
+}
+
+nav{
+    width: 80%;
+    /* height: 100vh; */
+    height: calc(100vh - 50px);
+    background-color: #282923;
+    position: absolute;
+    top: 50px;
+    left: -80%;
+    transition: .5s;
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: #a6e22c;
+    padding: 10px 20px;
+    border-bottom: 1px solid #a6e22c;
+}
+
+/* CSS 選取器 */
+#menu_control:checked ~ .header nav{
+    left: 0;
+}
+
+@media screen and (min-width:768px) {
+    .menu_btn{
+        display: none;
+    }
+    .logo img{
+        vertical-align: middle;
+        position: absolute;
+        left: 10px;
+        transition: .5s;
+    }
+    .header{
+        display: flex;
+        justify-content: space-between;
+        background-color: #282923;
+        align-items: center;
+    }
+    nav{
+        position: relative;
+        left: 0;
+        display: flex;
+        width: auto;
+        height: auto;
+        top: 0;
+        background-color: transparent;
+    }
+    nav a{
+        border-bottom: none;
+    }
+}
